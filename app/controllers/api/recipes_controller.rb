@@ -4,8 +4,8 @@ class Api::RecipesController < ApplicationController
     render "index.json.jb"
   end
 
-  def first_recipe_method
-    @recipe = Recipe.first
-    render "first_recipe.json.jb"
+  def show
+    @recipe = Recipe.find_by(id: params[:id])
+    render "show.json.jb"
   end
 end
