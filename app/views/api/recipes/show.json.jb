@@ -2,8 +2,9 @@
   id: @recipe.id,
   title: @recipe.title,
   chef: @recipe.chef,
-  prep_time: @recipe.prep_time,
+  prep_time: @recipe.friendly_prep_time,
   ingredients: @recipe.ingredients_list,
   directions: @recipe.directions_list,
   image_url: @recipe.image_url,
+  created_at: @recipe.friendly_created_at,
 }
