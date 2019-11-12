@@ -3,7 +3,7 @@
   title: @recipe.title,
   chef: @recipe.chef,
   prep_time: @recipe.prep_time,
-  ingredients: @recipe.ingredients,
-  directions: @recipe.directions,
+  ingredients: @recipe.ingredients_list,
+  directions: @recipe.directions_list,
   image_url: @recipe.image_url,
 }
