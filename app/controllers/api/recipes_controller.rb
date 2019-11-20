@@ -1,14 +1,19 @@
 class Api::RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    if current_user
+      # @recipes = Recipe.where(user_id: current_user.id)
+      @recipes = current_user.recipes
 
-    if params[:input_search]
-      @recipes = @recipes.where("title ILIKE ?", "%#{params[:input_search]}%")
+      if params[:input_search]
+        @recipes = @recipes.where("title ILIKE ?", "%#{params[:input_search]}%")
+      end
+
+      @recipes = @recipes.order(:id => :asc)
+
+      render "index.json.jb"
+    else
+      render json: []
     end
-
-    @recipes = @recipes.order(:id => :asc)
-
-    render "index.json.jb"
   end
 
   def create
@@ -17,6 +22,8 @@ class Api::RecipesController < ApplicationController
       chef: params[:input_chef],
       ingredients: params[:input_ingredients],
       directions: params[:input_directions],
+      prep_time: params[:input_prep_time],
+      user_id: current_user.id,
     )
     @recipe.save
     render "show.json.jb"
