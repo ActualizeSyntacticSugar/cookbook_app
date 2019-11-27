@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # EXAMPLE HTML ROUTE
   get "/recipes" => "recipes#index"
+  get "/recipes/new" => "recipes#new"
   get "/recipes/:id" => "recipes#show"
 
   # EXAMPLE JSON ROUTE WITH API NAMESPACE
