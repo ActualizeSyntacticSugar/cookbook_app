@@ -31,4 +31,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(id: params[:id])
     render "edit.html.erb"
   end
+
+  def update
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe.title = params[:title]
+    @recipe.chef = params[:chef]
+    @recipe.prep_time = params[:prep_time]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.directions = params[:directions]
+    @recipe.user_id = params[:user_id]
+    @recipe.save
+    redirect_to "/recipes"
+  end
 end
