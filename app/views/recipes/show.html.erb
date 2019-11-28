@@ -5,3 +5,12 @@
 
 <a href="/recipes">All recipes</a>
 <a href="/recipes/<%= @recipe.id %>/edit">Edit recipe</a>
+
+<!-- Using a form -->
+<form method="post" action="/recipes/<%= @recipe.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Destroy recipe">
+</form>
+
+<!-- Using a link -->
+<a href="/recipes/<%= @recipe.id %>" data-method="delete" rel="nofollow">Destroy recipe</a>

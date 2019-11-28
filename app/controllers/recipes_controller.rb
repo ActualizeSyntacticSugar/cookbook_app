@@ -43,4 +43,10 @@ class RecipesController < ApplicationController
     @recipe.save
     redirect_to "/recipes"
   end
+
+  def destroy
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe.destroy
+    redirect_to "/recipes"
+  end
 end
